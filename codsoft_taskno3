@@ -67,7 +67,7 @@ int main() {
                 gameWon = hasWon(board, player);
 
                 if (!gameWon) {
-                    player = (player == 'X') ? 'O' : 'X'; // Switch player after checking for a win
+                    player = (player == 'X') ? 'O' : 'X'; 
                 }
             } else {
                 std::cout << "Invalid move. Please try again." << std::endl;
