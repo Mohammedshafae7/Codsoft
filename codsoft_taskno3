@@ -1,4 +1,3 @@
-// welcome to my code in the 3rd task for the codsoft
 #include <iostream>
 
 bool isEmpty(char board[3][3], int row, int col) {
@@ -46,7 +45,8 @@ void printBoard(char board[3][3]) {
 }
 
 int main() {
-    char board[3][3] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+  char board[3][3] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+
     char player = 'X';
     bool playAgain = true;
 
@@ -66,21 +66,21 @@ int main() {
 
                 gameWon = hasWon(board, player);
 
-                player = (player == 'X') ? 'O' : 'X';
+                if (!gameWon) {
+                    player = (player == 'X') ? 'O' : 'X'; // Switch player after checking for a win
+                }
             } else {
                 std::cout << "Invalid move. Please try again." << std::endl;
             }
         }
 
-        if (!gameWon) {
-            gameDraw = isDraw(board);
-        }
-
         if (gameWon) {
-            std::cout << "Player " << player << " wins!" << std::endl;
+            char winner = (player == 'X') ? 'O' : 'X';
+            std::cout << "Player " << winner << " wins!" << std::endl;
         } else if (gameDraw) {
             std::cout << "The game is a draw." << std::endl;
         }
+
         char response;
         std::cout << "Do you want to play again (y/n)? ";
         std::cin >> response;
